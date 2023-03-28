@@ -1,0 +1,1 @@
+[{"model": "products.product", "pk": 1, "fields": {"name": "test product", "description": "asfdasf asdf as df sfd asdf as dfa sdf asdf as df", "price": "12.00", "quantity": 2, "image": "products_image/Adidas-hoodie.png", "category": 1}}]

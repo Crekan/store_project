@@ -1,0 +1,10 @@
+[
+  {
+    "model": "products.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Одежда",
+      "description": "Описание для олежды"
+    }
+  }
+]
