@@ -16,16 +16,14 @@
     <div class="container">
 
         <div class="row">
-            {% for category in categories %}
-                <div class="col-lg-3">
-
-                    <h1 class="my-4">Store</h1>
+            <div class="col-lg-3">
+                <h1 class="my-4">Store</h1>
+                {% for category in categories %}
                     <div class="list-group">
-                        <a href="#" class="list-group-item">{{ category.name }}</a>
+                        <a href="{% url 'products:category' category.id%} " class="list-group-item">{{ category.name }}</a>
                     </div>
-
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
 
             <!-- /.col-lg-3 -->
 
