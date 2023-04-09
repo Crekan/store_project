@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, TemplateView
+from django.core.cache import cache
 
 from .models import Basket, Product, ProductCategory
 
@@ -22,22 +23,13 @@ class ProductsListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductsListView, self).get_context_data()
-        context['categories'] = ProductCategory.objects.all()
+        categories = cache.get('categories')
+        if not categories:
+            context['categories'] = ProductCategory.objects.all()
+            cache.set('categories', context['categories'], 30)
+        else:
+            context['categories'] = categories
         return context
-
-
-# def products(request, category_id=None, page_number=1):
-#     products = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
-#
-#     per_page = 2
-#     paginator = Paginator(products, per_page)
-#     products_paginator = paginator.page(page_number)
-#
-#     context = {
-#         'products': products_paginator,
-#         'categories': ProductCategory.objects.all(),
-#     }
-#     return render(request, 'products/products.html', context)
 
 
 @login_required
