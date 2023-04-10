@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.humanize',
 
     'allauth',
     'allauth.account',
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'products.context_processors.baskets',
             ],
         },
     },
@@ -173,3 +175,7 @@ CACHES = {
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51MvHKBES91dnZ23UjhGHd0LGC3LAmutgqulynKtiSYuKXTFd4tEmJpP1v9wJPpip9X7ChF9HHyrnru3bMmjAY87v00mQAyBvve'
+STRIPE_SECRET_KEY = 'sk_test_51MvHKBES91dnZ23USLOvAhW8jhePYb0elODnNZbtLc6PrEjNuk5OUmSuOFroi2Y5EGwaYwFjglqu22ldCntVuRr500t3SVe9js'
+STRIPE_WEBHOOK_SECRET = 'whsec_6b1986e3e09c9b6a6e38992a63e49c88160055f91ce226502046c3805247df7f'
